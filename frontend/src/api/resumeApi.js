@@ -1,8 +1,9 @@
+import { API_BASE_URL } from "./config.js";
 export async function analyzeResume(file) {
   const formData = new FormData();
   formData.append("resume", file);
 
-  const response = await fetch("/api/resumes/analyze", {
+  const response = await fetch(`${API_BASE_URL}/api/tutor/course-plan`, {
     method: "POST",
     body: formData,
   });

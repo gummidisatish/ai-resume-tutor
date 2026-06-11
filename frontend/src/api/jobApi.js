@@ -1,6 +1,6 @@
+import { API_BASE_URL } from "./config.js";
 export async function analyzeJob(targetRole, jobDescription) {
-  const response = await fetch("/api/jobs/analyze", {
-    method: "POST",
+const response = await fetch(`${API_BASE_URL}/api/tutor/course-plan`, {    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },

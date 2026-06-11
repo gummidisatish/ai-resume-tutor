@@ -1,9 +1,10 @@
+import { API_BASE_URL } from "./config.js";
 export async function generateCoursePlan(
   skill,
   targetRole,
   knowledgeLevel = "beginner"
 ) {
-  const response = await fetch("/api/tutor/course-plan", {
+  const response = await fetch(`${API_BASE_URL}/api/tutor/course-plan`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
