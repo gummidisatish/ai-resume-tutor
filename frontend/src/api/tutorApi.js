@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "./config.js";
+
 export async function generateCoursePlan(
   skill,
   targetRole,
@@ -21,9 +22,7 @@ export async function generateCoursePlan(
   try {
     data = await response.json();
   } catch {
-    throw new Error(
-      "The backend returned an invalid tutor response."
-    );
+    throw new Error("The backend returned an invalid tutor response.");
   }
 
   if (!response.ok) {

@@ -1,6 +1,7 @@
 import { API_BASE_URL } from "./config.js";
+
 export async function analyzeMatch(profile, job) {
-  const response = await fetch(`${API_BASE_URL}/api/tutor/course-plan`, {
+  const response = await fetch(`${API_BASE_URL}/api/matches/analyze`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

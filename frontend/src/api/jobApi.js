@@ -1,6 +1,8 @@
 import { API_BASE_URL } from "./config.js";
+
 export async function analyzeJob(targetRole, jobDescription) {
-const response = await fetch(`${API_BASE_URL}/api/tutor/course-plan`, {    method: "POST",
+  const response = await fetch(`${API_BASE_URL}/api/jobs/analyze`, {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
@@ -10,7 +12,13 @@ const response = await fetch(`${API_BASE_URL}/api/tutor/course-plan`, {    metho
     }),
   });
 
-  const data = await response.json();
+  let data;
+
+  try {
+    data = await response.json();
+  } catch {
+    throw new Error("The backend returned an invalid job response.");
+  }
 
   if (!response.ok) {
     throw new Error(
