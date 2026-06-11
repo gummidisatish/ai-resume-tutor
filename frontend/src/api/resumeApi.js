@@ -14,14 +14,22 @@ export async function analyzeResume(file) {
   try {
     data = await response.json();
   } catch {
-    throw new Error("The backend returned an invalid resume response.");
+    throw new Error(
+      `Backend returned invalid response. Status: ${response.status}`
+    );
   }
 
   if (!response.ok) {
+    console.log("Resume API error:", data);
+
+    if (typeof data.detail === "string") {
+      throw new Error(data.detail);
+    }
+
     throw new Error(
-      typeof data.detail === "string"
-        ? data.detail
-        : "Resume analysis failed."
+      `Resume analysis failed. Status: ${response.status}. Details: ${JSON.stringify(
+        data.detail || data
+      )}`
     );
   }
 
